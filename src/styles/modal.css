@@ -1,0 +1,48 @@
+.modal{
+    
+    width: 25vw;
+    background-color: white;
+    position: fixed;
+    border-radius: 12px;
+    position: fixed;
+    top: 20vh;
+    left: 40vw;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: medium;
+    
+}
+
+.modal.active{
+    display: block;
+}
+
+.modal_content{
+    padding: 20px;
+    background-color: grey;
+    border: 2px solid black;
+    border-radius: 12px;
+}
+
+.modal__cross {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    fill: grey;
+    cursor: pointer;
+  }
+
+  .createNoteForm{
+      text-align: left;
+  }
+
+ select, textarea{
+     font-size: medium;
+ }
+
+ .alignRight{
+     text-align: right;
+ }

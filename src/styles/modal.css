@@ -26,12 +26,10 @@
 }
 
 .modal__cross {
-    width: 15px;
-    height: 15px;
     position: absolute;
     top: 10px;
     right: 10px;
-    fill: grey;
+    fill: dimgrey;
     cursor: pointer;
   }
 
@@ -45,4 +43,11 @@
 
  .alignRight{
      text-align: right;
+ }
+
+ .note_buttons{
+    background-color: aliceblue;
+    cursor: pointer;
+    border: none;
+    color: gray;
  }

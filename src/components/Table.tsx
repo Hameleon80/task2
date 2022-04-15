@@ -11,20 +11,20 @@ function Table(props :{dataObject: {Notes: {header: string[], notes: string[]}, 
                     ?
                         <HeadTable data={props.dataObject.Archive.header} />
                     :
-                    <HeadTable data={props.dataObject.Notes.header} />
+                        <HeadTable data={props.dataObject.Notes.header} />
                 }
             </thead>
             <tbody>
                 {
                     props.isArchive
                     ? 
-                      PrepareDataToArchiveTable(props.dataObject.Notes.notes, props.dataObject.Archive.notes).map((note)=>{
-                            return <BodyRow row={note}/>
+                        PrepareDataToArchiveTable(props.dataObject.Notes.notes, props.dataObject.Archive.notes).map((note, key)=>{
+                            return <BodyRow row={note} key={key}/>
                         })
                     :
-                    props.dataObject.Notes.notes.map((note)=>{
-                        return <BodyRow row={note}/>
-                    })
+                        props.dataObject.Notes.notes.map((note, key)=>{
+                            return <BodyRow row={note} key={key}/>
+                        })
                 }
             </tbody>
         </table>

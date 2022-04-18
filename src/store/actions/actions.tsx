@@ -1,7 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const addNoteAction = createAction<string>('ADD_NOTE');
-export const deleteNoteAction = createAction('DELETE_NOTE');
-export const editNoteAction = createAction('EDIT_NOTE');
-export const archiveNoteAction = createAction('ARCHIVE_NOTE');
-export const unArchiveNoteAction = createAction('UNARCHIVE_NOTE');
+export const AddNoteAction = createAction<string>('ADD_NOTE');
+export const DeleteNoteAction = createAction<string>('DELETE_NOTE');
+export const EditNoteAction = createAction<{index: number, note: string}>('EDIT_NOTE');
+export const ArchiveNoteAction = createAction<string>('ARCHIVE_NOTE');
+export const UnArchiveNoteAction = createAction<string>('UNARCHIVE_NOTE');

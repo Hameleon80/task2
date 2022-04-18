@@ -1,20 +1,34 @@
 .modal{
-    
     width: 25vw;
     background-color: white;
     position: fixed;
     border-radius: 12px;
-    position: fixed;
     top: 20vh;
     left: 40vw;
     display: none;
     align-items: center;
     justify-content: center;
     font-size: medium;
-    
 }
 
 .modal.active{
+    display: block;
+}
+
+.modalArchive{
+    width: 80vw;
+    background-color: white;
+    position: fixed;
+    border-radius: 12px;
+    top: 20vh;
+    left: 10vw;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: medium;
+}
+
+.modalArchive.active{
     display: block;
 }
 
@@ -26,23 +40,32 @@
 }
 
 .modal__cross {
-    width: 15px;
-    height: 15px;
     position: absolute;
     top: 10px;
     right: 10px;
-    fill: grey;
+    fill: dimgrey;
     cursor: pointer;
-  }
+}
 
-  .createNoteForm{
-      text-align: left;
-  }
+.createNoteForm{
+    text-align: left;
+}
 
- select, textarea{
-     font-size: medium;
- }
+select, textarea{
+    font-size: medium;
+}
 
- .alignRight{
-     text-align: right;
- }
+.alignRight{
+    text-align: right;
+}
+
+.note_buttons{
+    background-color: aliceblue;
+    cursor: pointer;
+    border: none;
+    color: gray;
+}
+
+.formText{
+    width: 100%;;
+}

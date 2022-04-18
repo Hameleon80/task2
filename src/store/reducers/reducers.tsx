@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { addNoteAction, archiveNoteAction, deleteNoteAction, editNoteAction, unArchiveNoteAction } from "../actions/actions";
+import { AddNoteAction, ArchiveNoteAction, DeleteNoteAction, EditNoteAction, UnArchiveNoteAction } from "../actions/actions";
 import {Notes, Archive} from '../initialState';
 
 const initialState = {
@@ -8,20 +8,22 @@ const initialState = {
 
 const reducers = createReducer(initialState, (builder)=>{
     builder
-        .addCase(addNoteAction, (state, action)=>{
+        .addCase(AddNoteAction, (state, action)=>{
             state.Notes.notes.push(action.payload);
         })
-        .addCase(deleteNoteAction, (state,action)=>{
-
+        .addCase(DeleteNoteAction, (state, action)=>{
+            state.Notes.notes = state.Notes.notes.filter((value) => {return value !== action.payload});
         })
-        .addCase(editNoteAction, (state, action)=>{
-
+        .addCase(EditNoteAction, (state, action)=>{
+            state.Notes.notes[action.payload.index] = action.payload.note;
         })
-        .addCase(archiveNoteAction, (state, action)=>{
-
+        .addCase(ArchiveNoteAction, (state, action)=>{
+            state.Notes.notes = state.Notes.notes.filter((value) => {return value !== action.payload});
+            state.Archive.notes.push(action.payload);
         })
-        .addCase(unArchiveNoteAction, (state, action)=>{
-
+        .addCase(UnArchiveNoteAction, (state, action)=>{
+            state.Archive.notes = state.Archive.notes.filter((value) => {return value !== action.payload});
+            state.Notes.notes.push(action.payload);
         })
 });
 

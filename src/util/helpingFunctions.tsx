@@ -47,19 +47,19 @@ function CountNotesByCategory (notes: string[], category: string):number {
  */
 export function getNoteFromForm(data: [string, Date, string, string]): string{
     let result = '';
-    console.log(data);
     data.forEach((value)=>{
         if(value instanceof Date){
-            result.concat(
+            result += (
                 months[value.getMonth()] + ' ' +
                 (value.getDate() < 10 ? '0' + value.getDate() : value.getDate()) + ', ' +
                 value.getFullYear() + '|'
             )
+        }else {
+            result += (value + '|')
         }
-        result.concat(value + '|')
     })
     const text = data[data.length-1].toString();
-    result.concat(findDatesInString(text));
+    result += findDatesInString(text);
     return result;
 }
 

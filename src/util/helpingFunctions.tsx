@@ -60,7 +60,6 @@ export function getNoteFromForm(data: [string, Date, string, string]): string{
     })
     const text = data[data.length-1].toString();
     result += findDatesInString(text);
-    result += '|#icons'
     return result;
 }
 

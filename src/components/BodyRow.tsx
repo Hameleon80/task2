@@ -5,7 +5,7 @@ import BodyCell from "./BodyCell";
 
 const BodyRow = (props: { row: string, keyRow: number, isArchive: boolean, setChanget: Function, isChanget:boolean, 
                 setActiveModal: Function, setModalName: Function, setIsEdit: Function, setKeyToEditNote: Function, 
-                setModalCategory: Function, setModalText: Function}) => {
+                setModalCategory: Function, setModalText: Function, setModalArchiveIsActive: Function, setCategoryShow: Function}) => {
 
     //split string by elements
     const str = props.row.split('|');
@@ -19,19 +19,27 @@ const BodyRow = (props: { row: string, keyRow: number, isArchive: boolean, setCh
     }
 
     //edit current note
-    const editNote = (note: string) => {
-        let values = props.row.split('|');
+    const editNote = () => {
         props.setActiveModal(true);
-        props.setModalName(values[0]);
-        props.setModalCategory(values[2]);
-        props.setModalText(values[3]);
+        props.setModalName(str[0]);
+        props.setModalCategory(str[2]);
+        props.setModalText(str[3]);
         props.setIsEdit(true);
         props.setKeyToEditNote(props.keyRow);
     }
 
-    const archiveNote = (note: string) => {
-        dispatch(ArchiveNoteAction());
+    //add note to archive
+    const archiveNote = () => {
+        dispatch(ArchiveNoteAction(props.row));
+        props.setChanget(props.isChanget? false : true);
     }
+
+    //view archive notes
+    const viewArchiveNotes = () =>{
+        props.setModalArchiveIsActive(true);
+        props.setCategoryShow(str[0]);
+    }
+    
     return (
         <tr className="row">
             {
@@ -46,18 +54,14 @@ const BodyRow = (props: { row: string, keyRow: number, isArchive: boolean, setCh
                     ?
                     <td>
                         <div className="hideText div-icon">
-                            <button type="submit" className="note_buttons" onClick={() => {
-                                editNote("");
-                            }} ><i className="fa-solid fa-pen"></i></button>
+                            <button type="submit" className="note_buttons" onClick={() => editNote()} ><i className="fa-solid fa-pen"></i></button>
 
-                            <button type="submit" className="note_buttons" onClick={() => archiveNote("")} ><i className="fa-solid fa-box"></i></button>
+                            <button type="submit" className="note_buttons" onClick={() => archiveNote()} ><i className="fa-solid fa-box"></i></button>
                             
-                            <button type="submit" className="note_buttons" onClick={() => {
-                                    deleteNote();
-                                }} ><i className="fa-solid fa-trash" ></i></button>
+                            <button type="submit" className="note_buttons" onClick={() => deleteNote() } ><i className="fa-solid fa-trash" ></i></button>
                         </div>
                     </td>
-                    : null
+                    : <button type="submit" onClick={() => viewArchiveNotes()}>View</button>
             }
         </tr>
     )

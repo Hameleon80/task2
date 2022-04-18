@@ -3,7 +3,7 @@ import React from "react";
 function Head(props: { data: string[]; }) {
     return (
         <tr>
-            {props.data.map((value, key) => {
+            {props.data.map((value) => {
                 return (
                 <th>
                     <div>

@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { AddNoteAction, DeleteNoteAction, EditNoteAction } from "../actions/actions";
+import { AddNoteAction, ArchiveNoteAction, DeleteNoteAction, EditNoteAction, UnArchiveNoteAction } from "../actions/actions";
 import {Notes, Archive} from '../initialState';
 
 const initialState = {
@@ -16,6 +16,14 @@ const reducers = createReducer(initialState, (builder)=>{
         })
         .addCase(EditNoteAction, (state, action)=>{
             state.Notes.notes[action.payload.index] = action.payload.note;
+        })
+        .addCase(ArchiveNoteAction, (state, action)=>{
+            state.Notes.notes = state.Notes.notes.filter((value) => {return value !== action.payload});
+            state.Archive.notes.push(action.payload);
+        })
+        .addCase(UnArchiveNoteAction, (state, action)=>{
+            state.Archive.notes = state.Archive.notes.filter((value) => {return value !== action.payload});
+            state.Notes.notes.push(action.payload);
         })
 });
 

@@ -13,6 +13,6 @@ export const Notes = {
 };
 
 export const Archive = {
-    header: ['Note Category', 'Active', 'Archived'],
+    header: ['Note Category', 'Active', 'Archived', ""],
     notes:['How improve engine|Jule 29, 2021|' + Categories.get('IDEA') + '|Change valve travel|' ]
 }
